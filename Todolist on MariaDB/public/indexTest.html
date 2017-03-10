@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="stylesheets/bootstrap.css" />
+    <link rel="stylesheet" href="stylesheets/style.css" />
+    <link rel="stylesheet" href="https://cdn.static.runoob.com/libs/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="javascripts/jquery-3.1.1.js"></script>
+    <script src="javascripts/bootstrap.js"></script>
+</head>
+<body style="background-image: url('./images/white.png');">
+<!-- Fixed navbar  -->
+<div class="navbar navbar-inverse" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand" href="#">TodoList</a>
+        </div>
+        <div class="navbar-collapse collapse">
+
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown">用户信息<span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                        <li><a href="#" id="menu_list" >管理用户</a></li>
+                        <li><a href="#">修改密码</a></li>
+                        <li><a id="logout" href="#">退出</a></li>
+                    </ul>
+                </li>
+            </ul>
+            <form class="navbar-form navbar-right" role="search">
+                <div class="form-group has-feedback">
+                    <div id="clearButton" class="close" style="margin-top: 4px;color: white">
+                        <span class="glyphicon glyphicon-remove" ></span>
+                    </div>
+                    <label class="control-label" for="search">搜索</label>
+                    <input type="text" class="form-control" id="search" placeholder="Search" >
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+<div id="div_todo">
+    <ul id="myTab" class="nav nav-tabs">
+        <li id="Eventgoing" class="active">
+            <a href="#going" data-toggle="tab">
+                正在执行
+            </a>
+        </li>
+        <li id="Eventcompleted">
+            <a href="#finished" data-toggle="tab">
+                已完成
+            </a>
+        </li>
+        <li id="Eventpassed">
+            <a href="#passed" data-toggle="tab">
+                已过期
+            </a>
+        </li>
+    </ul>
+
+    <div id="myTabContent" class="tab-content">
+        <div class="tab-pane fade in active" id="going">
+            <!-----------------------------------------------------------事件列表---------------------------------------------------------->
+            <div class="panel-group" id="accordion">
+                <!-------------------------------------------一项----------------------------------------------------------->
+                <div class="panel panel-success">
+                    <div class="panel-heading">
+                        <h4 class="panel-title">
+                            <a data-toggle="collapse" data-parent="#accordion"
+                               href="#collapseOne">
+                                事件描述
+                            </a>
+                        </h4>
+                    </div>
+                    <!-------------------------展开的一项--------------------------->
+                    <div id="collapseOne" class="panel-collapse collapse" style="margin-right: 15%;margin-left: 15%;">
+                        <div class="panel-body">
+                            <form class="form-horizontal" role="form">
+                                <div class="form-group">
+                                    <label for="firstname" class="col-sm-2 control-label">事件</label>
+                                    <div class="col-sm-10">
+                                        <input type="text" class="form-control" id="firstname"
+                                               placeholder="请输入事件">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label for="lastname" class="col-sm-2 control-label">日期</label>
+                                    <div class="col-sm-10">
+                                        <input type="datetime-local" class="form-control" id="lastname">
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-sm-offset-2 col-sm-10">
+                                        <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-ok"></span>确定</button>
+                                        <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-remove"></span>删除</button>
+                                        <button type="button" class="btn btn-default"><span class="glyphicon glyphicon-pencil"></span>修改</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                    <!-------------------------展开的一项--------------------------->
+                </div>
+                <!----------------------------------------------------一项----------------------------------------------------------->
+            </div>
+            <button id="newbutton" href="#" class="btn btn-info btn-lg" data-toggle="modal" data-target="#myModal" onclick="newModal()">
+                <span class="glyphicon glyphicon-plus"></span> 新建事件
+            </button>
+
+            <!-- 模态框（Modal） -->
+            <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
+                                &times;
+                            </button>
+                            <h3 class="modal-title" id="myModalLabel">
+                                新建事件
+                            </h3>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <div class="form-group">
+                                    <label for="newtime">日期</label>
+                                    <input type="datetime-local" class="form-control" id="newtime">
+                                </div>
+                                <div class="form-group">
+                                    <label for="newevent">事件</label>
+                                    <textarea id="newevent" class="form-control" rows="3"></textarea>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button id="closeModal" type="button" class="btn btn-default" data-dismiss="modal">关闭
+                            </button>
+                            <button id="submitnew" type="button" class="btn btn-primary"data-dismiss="modal">
+                                提交
+                            </button>
+                        </div>
+                    </div><!-- /.modal-content -->
+                </div><!-- /.modal -->
+            </div>
+        </div>
+        <div class="tab-pane fade" id="finished">
+            <div class="alert alert-info alert-dismissable">
+                <!--data-dismiss="alert" 点击后关闭alert项目-->
+                <button type="button" class="close" data-dismiss="alert"
+                        aria-hidden="true">
+                    &times;
+                </button>
+                信息！请注意这个信息.
+                <div style="float: right">时间</div>
+            </div>
+            <div class="alert alert-info alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert"
+                        aria-hidden="true">
+                    &times;
+                </button>
+                信息！请注意这个信息。
+                <span style="float: right">时间</span>
+            </div>
+        </div>
+        <div class="tab-pane fade" id="passed">
+            <div class="alert alert-danger alert-dismissable">
+                <button type="button" class="close" data-dismiss="alert"
+                        aria-hidden="true">
+                    &times;
+                </button>
+                信息！请注意这个信息。
+                <span style="float: right">时间</span>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

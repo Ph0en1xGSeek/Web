@@ -1,0 +1,70 @@
+body{
+  background-image: url('../images/green.png');
+  background-size: cover;
+  transition: background-image 0.3s;
+}
+
+label[for^='username'],label[for^='password'],label[for^='changepassword'],label[for^='changepasswordAgain']{
+  color: white;
+}
+
+#div_loggin,#div_add,#div_list{
+  position: absolute;
+  left: 50%;
+  top:50%;
+  transform: translateX(-50%) translateY(-50%);
+  width: 50%;
+  height:50%;
+  max-width: 350px;
+}
+
+.btn-lg{
+  position: absolute;
+  left:50%;
+  transform: translateX(-50%);
+}
+
+#exist,#consistency{
+  visibility: hidden;
+  width: 50px;
+}
+
+.tab-pane{
+  padding-left:30px;
+  padding-right:30px;
+  padding-top: 30px;
+  padding-bottom:3px;
+}
+
+
+.modal-backdrop{
+  z-index: 0;
+}
+
+
+.modal-dialog{
+  z-index: 9999;
+}
+
+h4{
+  padding:10px;
+}
+
+#newevent{
+  resize : none;
+}
+
+.form-group.has-feedback{
+  color: #999;
+}
+
+#search{
+  color: #555;
+  background-color: #AAA;
+  border: hidden;
+}
+#search:hover,#search:focus{
+  background-color: #FFF;
+  color: #999;
+  border: white 1px;
+}
